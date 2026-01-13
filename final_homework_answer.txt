@@ -1,0 +1,39 @@
+ЗАДАНИЕ 1
+
+1. Сетевые службы, обнаруженные на Metasploitable:
+   - 21/tcp: vsftpd 2.3.4 (FTP server)
+   - 22/tcp: OpenSSH 4.7p1 (SSH server)
+   - 23/tcp: telnetd (Telnet server)
+   - 25/tcp: Postfix smtpd (SMTP server)
+   - 53/tcp: ISC BIND 9.4.2 (DNS server)
+   - 80/tcp: Apache httpd 2.2.8 (Веб-сервер)
+   - 139/tcp, 445/tcp: Samba smbd 3.X-4.X (Файловый обмен)
+   - 3306/tcp: MySQL 5.0.51a (База данных)
+   - 53/udp: DNS служба
+   - И другие...
+
+2. Обнаруженные уязвимости (с ссылками):
+   - vsftpd 2.3.4 Backdoor Command Execution: https://www.exploit-db.com/exploits/49757
+   - Samba 3.0.20 Remote Code Execution: https://www.exploit-db.com/exploits/7701
+   - Apache 2.2.0/2.2.8 Multiple Vulnerabilities: https://www.exploit-db.com/exploits/17691
+
+ЗАДАНИЕ 2
+
+1. Отличия режимов сканирования:
+   - SYN сканирование (-sS): стандартный метод, отправляет SYN пакеты
+   - FIN сканирование (-sF): стелс-метод, отправляет FIN пакеты
+   - Xmas сканирование (-sX): отправляет пакеты с флагами FIN, PSH, URG
+   - UDP сканирование (-sU): работает с UDP протоколом
+
+   Синтаксически: SYN устанавливает почти полное соединение,
+   FIN/Xmas используют одиночные пакеты без установки соединения,
+   UDP работает на другом транспортном уровне.
+
+2. Ответ сервера:
+   - На SYN: открытые порты → SYN-ACK (состояние "open")
+   - На FIN: открытые порты → нет ответа (состояние "open|filtered")
+   - На Xmas: большинство портов → нет ответа ("filtered" или "no-response")
+   - На UDP: без флага -Pn хост считается недоступным
+
+   Вывод: разные методы сканирования дают разную информацию о состоянии портов,
+   что важно для обхода систем обнаружения вторжений.

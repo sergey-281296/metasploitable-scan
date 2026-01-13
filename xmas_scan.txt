@@ -1,0 +1,10 @@
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2026-01-13 19:19 MSK
+Nmap scan report for 192.168.27.128
+Host is up (0.022s latency).
+Not shown: 506 closed tcp ports (reset), 491 open|filtered tcp ports (no-response)
+PORT     STATE    SERVICE
+2160/tcp filtered apc-2160
+9050/tcp filtered tor-socks
+9207/tcp filtered wap-vcal-s
+
+Nmap done: 1 IP address (1 host up) scanned in 297.72 seconds
